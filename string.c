@@ -14,7 +14,7 @@ int _string(char *str)
 	if (!str)
 		return (0);
 	while (str[j])
-		putchar(str[j++]);
+		_putchar(str[j++]);
 
 	return (j - 1);
 }

@@ -9,7 +9,6 @@
 int _printf(const char *format, ...)
 {
 	va_list opt;
-	char *str;
 	int num = 0, len, i = 0;
 
 	va_start(opt, format);
@@ -20,29 +19,28 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case '%':
-					putchar('%');
+					_putchar('%');
 					i++;
 					break;
 				case 'c':
-					putchar (va_arg(opt, int));
+					_putchar (va_arg(opt, int));
 					i++;
 					break;
 				case 's':
-					str = va_arg(opt, char *);
-					num += _string(str);
+					num += _string(va_arg(opt, char *));
 					i++;
 					break;
 				case 'i':
-					printf("%d", va_arg(opt, int));
+					num += _printd("%i", va_arg(opt, int));
 					i++;
 					break;
 				case 'd':
-					printf("%d", va_arg(opt, int));
+					num += _printd("%d", va_arg(opt, int));
 					i++;
 					break;
 			}
 		else
-			putchar(format[i]);
+			_putchar(format[i]);
 		i++;
 		num++;
 	}
